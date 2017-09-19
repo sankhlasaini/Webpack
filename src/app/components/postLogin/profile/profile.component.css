@@ -1,0 +1,49 @@
+.profileSection {
+    margin: 30px;
+}
+
+.profileCard {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#536DFE), to(#7C4DFF));
+}
+
+.detailedProfile {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#536DFE), to(#7C4DFF));
+}
+
+.profileCard md-card-content {
+    margin-top: 20px;
+}
+
+.avatarName {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.avatarLarge {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    border-radius: 100%;
+}
+
+.editInput {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .editInput {
+        width: 70%;
+    }
+}
+
+@media (min-width: 992px) {
+    .editInput {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .editInput {
+        width: 70%;
+    }
+}

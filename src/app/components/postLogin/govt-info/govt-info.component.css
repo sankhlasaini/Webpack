@@ -1,0 +1,10 @@
+.mainDiv {
+    margin: auto;
+}
+
+md-card {
+    cursor: pointer;
+    color: dimgray;
+    margin: 20px;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+<div fxLayoutAlign="center">
+  <div fxLayoutAlign="space-around" fxLayoutWrap="wrap" class="mainDiv">
+    <md-card fxFlex="250px" class="waves-effect" (click)="send('locByPin')">
+      <p>
+        <md-icon class="md-36">dialpad</md-icon>
+      </p>
+      <div>Search For Location By</div><b>PINCODE</b>
+    </md-card>
+
+    <md-card fxFlex="250px" class="waves-effect" (click)="send('hosByPin')">
+      <p>
+        <md-icon class="md-36">local_hospital</md-icon>
+      </p>
+      <div>Search For Hospital By</div><b>PINCODE</b>
+    </md-card>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

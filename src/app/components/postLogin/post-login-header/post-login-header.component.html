@@ -1,0 +1,64 @@
+<md-sidenav-container fullscreen *ngIf="userProfile">
+    <md-sidenav #sidenav class="sidebar material-dark-theme">
+        <div fxLayout="row" class="menuAvatar">
+            <div>
+                <img class="avatarLarge" src="{{userProfile.profilePic}}" alt="avatar" [mdMenuTriggerFor]="menuRef">
+            </div>
+            <div style="margin:auto;">
+                <p class="avatarName white-text"><b>{{userProfile.personalInfo.name}}</b></p>
+                <p class="avatarName white-text">{{userProfile.personalInfo.email}}</p>
+            </div>
+        </div>
+        <md-divider color="accent"></md-divider>
+
+        <div>
+            <md-nav-list>
+                <!--<h3 md-subheader>Folders</h3>-->
+                <md-list-item *ngFor="let navItem of navList" (click)="sidenav.close()" routerLink={{navItem.routerLink}}>
+                    <md-icon md-list-icon>{{navItem.icon}}</md-icon>
+                    <h4 md-line>{{navItem.name}}</h4>
+                </md-list-item>
+
+            </md-nav-list>
+        </div>
+    </md-sidenav>
+
+    <!--toolbar-->
+    <md-toolbar color="primary" class="header" fxLayout="column">
+        <button type="button" md-icon-button (click)="sidenav.open()">
+      <md-icon >menu</md-icon>
+    </button>
+        <span>Welcome</span>
+        <div fxFlex></div>
+
+        <div fxLayoutAlign="end">
+            <a>
+            <img class="avatar" src="{{userProfile.profilePic}}" alt="avatar" [mdMenuTriggerFor]="menuRef">
+        </a>
+            <md-menu #menuRef="mdMenu" x-position="after|before" y-position="below|above" [overlapTrigger]="false">
+                <div fxLayout="row" class="menuAvatar">
+                    <div>
+                        <img class="avatarLarge" src="{{userProfile.profilePic}}" alt="avatar">
+                    </div>
+                    <div style="margin:auto;">
+                        <p class="avatarName"><b>{{userProfile.personalInfo.name}}</b></p>
+                        <p class="avatarName">{{userProfile.personalInfo.email}}</p>
+                    </div>
+                </div>
+                <div fxLayout="row" class="dimgray-text">
+                    <button md-button (click)="onClick">
+                    <i class="material-icons">account_circle</i> MY ACCOUNT</button>
+                    <div fxFlex></div>
+                    <button md-button (click)="logout()">
+                    LOGOUT <i class="material-icons">exit_to_app</i></button>
+                </div>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <!--{{userProfile | json}}-->
+
+    <!--this is main content-->
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+</md-sidenav-container>

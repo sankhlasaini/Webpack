@@ -1,0 +1,60 @@
+<!--header-->
+<app-login-layout></app-login-layout>
+<button type="button" class="btn btn-primary">Primary</button>
+
+<!--main-->
+<div fxLayoutAlign="center" class="material-dark-theme">
+    <md-card class="logincard" fxFlex.xs="100%" fxFlex.gt-xs="400px">
+        <div [@bgImgTrigger]>
+            <md-card-title class="title text-center">LOGIN</md-card-title>
+            <md-card-content>
+                <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center">
+
+                    <!--email-->
+                    <md-input-container fxFlex color="accent">
+                        <input mdInput formControlName="email" type="email" required placeholder="Email">
+                        <md-error align="start">
+                            <div *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
+                                Email is required
+                            </div>
+                            <div *ngIf="loginForm.get('email').hasError('pattern') && loginForm.get('email')">
+                                Invalid email
+                            </div>
+                        </md-error>
+                    </md-input-container>
+
+                    <!--password-->
+                    <md-input-container fxFlex color="accent">
+                        <input mdInput formControlName="password" type="password" required placeholder="Password">
+                        <md-error align="start">
+                            <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
+                                Password is required
+                            </div>
+                            <div *ngIf="loginForm.get('password').hasError('pattern')">
+                                Password must be at least 6 char long, and contain a number
+                            </div>
+                        </md-error>
+                    </md-input-container>
+
+                    <div class="text-right">
+                        <a class="fgtPwdBtn">Forgot Password ?</a>
+                    </div>
+
+                    <div fxLayoutAlign="center" class="submitBtn">
+                        <button md-fab color="accent" type="submit" [disabled]="!loginForm.valid">
+                        <span *ngIf="!loading"><md-icon class="md-24" color="primary">check</md-icon>
+                        </span>
+                        <span *ngIf="loading">
+                            <md-progress-spinner mode="indeterminate" color="primary" strokeWidth="5" class="loadingSpinnerBtn"></md-progress-spinner>
+                        </span>
+                    </button>
+                    </div>
+                </form>
+                <div fxLayoutAlign="center" class="socialBtn">
+                    <a type="button" class="btn-floating btn-small  btn-fb waves-effect" (click)="socialLogin('facebook')"><i class="fa fa-facebook"></i></a>
+                    <a type="button" class="btn-floating btn-small  btn-gplus waves-effect" (click)="socialLogin('google')"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </md-card-content>
+        </div>
+    </md-card>
+</div>

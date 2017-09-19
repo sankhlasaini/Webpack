@@ -1,0 +1,64 @@
+<div fxLayout="row" fxFlex="80%" class="dashboard" fxLayoutGap="10px">
+    <md-card fxFlex="30%" class="chatBox">
+        <md-toolbar color="primary">
+
+            <md-input-container color="accent" fxFlex>
+                <input mdInput placeholder="Select Person" [mdAutocomplete]="auto" [formControl]="nameCtrl">
+            </md-input-container>
+
+            <md-autocomplete #auto="mdAutocomplete">
+                <md-option *ngFor="let user of filteredNames | async" [value]="user.name">
+                    {{ user.name }}
+                </md-option>
+            </md-autocomplete>
+
+            <!--check btn for startChat-->
+            <button md-icon-button class="margin-top-10" [disabled]="!nameCtrl.value">  
+          <md-icon class="md-18">check</md-icon>
+      </button>
+
+        </md-toolbar>
+
+
+        <md-nav-list>
+            <md-list-item *ngFor="let user of allProfiles" (click)="startChat(user)">
+                <a md-line><img class="avatar" src="{{user.profilePic}}" alt="avatar"> {{user.name}}</a>
+                <span *ngIf="user.status" class="online"></span>
+            </md-list-item>
+        </md-nav-list>
+
+    </md-card>
+
+
+    <md-card fxFlex class="chatBox">
+        <md-toolbar color="primary">
+            <span *ngIf="receiver.name"><img class="avatar" src="{{receiver.profilePic}}" alt="avatar"> {{receiver.name}}</span>
+        </md-toolbar>
+        <div class="msgBox">
+
+            <md-list>
+                <md-list-item *ngFor="let msgObj of messages">
+                    <div *ngIf="!msgObj.in" class="out">
+                        <md-card class="msgText">{{msgObj.data.text}}</md-card>
+                    </div>
+                    <div *ngIf="msgObj.in" class="in">
+                        <md-card class="msgText">{{msgObj.data.text}}</md-card>
+                    </div>
+                </md-list-item>
+            </md-list>
+
+            <h2 *ngIf="!receiver.name" fxLayoutAlign="center" class="dimgray-text">Start Chat...</h2>
+
+        </div>
+        <md-toolbar class="msgInput">
+            <md-input-container floatPlaceholder="auto" fxFlex>
+                <input mdInput [(ngModel)]="msg" type="text" placeholder="Type message" (keyup.enter)="sendMsg()" [disabled]="!receiver.name">
+            </md-input-container>
+
+            <button md-mini-fab (click)="sendMsg()" color="primary" class="margin-top-10" [disabled]="!msg">
+            <md-icon class="md-18">send</md-icon>
+        </button>
+        </md-toolbar>
+
+    </md-card>
+</div>

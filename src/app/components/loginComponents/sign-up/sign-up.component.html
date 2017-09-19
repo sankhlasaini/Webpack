@@ -1,0 +1,72 @@
+<!--header-->
+<app-login-layout></app-login-layout>
+
+<!--main-->
+<div fxLayoutAlign="center" class="material-dark-theme">
+    <md-card class="signUpCard" fxFlex.xs="100%" fxFlex.gt-xs="400px">
+        <div [@bgImgTrigger]>
+            <md-card-title class="title text-center">Sign Up</md-card-title>
+            <md-card-content>
+                <form [formGroup]="signUpForm" (ngSubmit)="signUp()" fxLayout="column" fxLayoutAlign="center">
+
+                    <!--full Name-->
+                    <md-input-container fxFlex color="accent">
+                        <input mdInput formControlName="name" type="text" required placeholder="Name">
+                        <md-error align="start">
+                            <div *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched">
+                                Name is required
+                            </div>
+                        </md-error>
+                    </md-input-container>
+
+                    <!--email-->
+                    <md-input-container fxFlex color="accent">
+                        <input mdInput formControlName="email" type="email" required placeholder="Email" #email (blur)="checkEmail(email.value)">
+                        <span mdPrefix></span>
+                        <md-hint *ngIf="userExist" align="end">Email Already Exists</md-hint>
+                        <md-error align="start">
+                            <div *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched">
+                                Email is required
+                            </div>
+                            <div *ngIf="signUpForm.get('email').hasError('pattern') && signUpForm.get('email')">
+                                Invalid email
+                            </div>
+                        </md-error>
+                    </md-input-container>
+
+                    <!--password-->
+                    <md-input-container fxFlex color="accent">
+                        <input mdInput formControlName="password" type="password" required placeholder="Password">
+                        <md-error align="start">
+                            <div *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched">
+                                Password is required
+                            </div>
+                            <div *ngIf="signUpForm.get('password').hasError('pattern')">
+                                Password must be at least 6 char long, and contain a number
+                            </div>
+                        </md-error>
+                    </md-input-container>
+
+                    <!--gender-->
+                    <md-radio-group formControlName="gender" [align]="'start'" fxLayoutGap="10%" fxLayoutAlign="center">
+                        <md-radio-button *ngFor="let gen of gender" name="formControlName" [value]="gen.value">
+                            {{gen.view}}
+                        </md-radio-button>
+                    </md-radio-group>
+
+                    <div fxLayoutAlign="center" class="submitBtn">
+                        <button md-fab color="accent" type="submit" [disabled]="userExist || !signUpForm.valid">
+                        <span *ngIf="!loading"><md-icon class="md-24" color="primary">check</md-icon>
+                        </span>
+                        <span *ngIf="loading">
+                            <md-progress-spinner mode="indeterminate" color="primary" strokeWidth="5" class="loadingSpinnerBtn"></md-progress-spinner>
+                        </span>
+                    </button>
+                    </div>
+
+                </form>
+            </md-card-content>
+        </div>
+
+    </md-card>
+</div>

@@ -1,0 +1,32 @@
+.searchInput {
+    font-size: 220%;
+    transition: 500ms all cubic-bezier(0.55, 0.06, 0.68, 0.19);
+}
+
+.searchInputBlur {
+    width: 250px;
+}
+
+.searchInputFocus {
+    width: 550px;
+}
+
+.md-hint {
+    font-size: 50%;
+    color: dimgray;
+}
+
+.resTable {
+    padding: 0;
+    margin-top: 30px;
+}
+
+.thead {
+    /* box-shadow: 0 2px 10px dimgray; */
+    background: #536DFE;
+    color: white;
+}
+
+.table {
+    padding: 20px;
+}

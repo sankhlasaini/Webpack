@@ -1,0 +1,67 @@
+/*.chatBox {
+    height: 500px;
+}
+
+.chatBox md-card-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+}*/
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.msgText {
+    display: inline-flex;
+    padding: 5px 10px 5px 10px;
+    font-size: 14px;
+    margin: 2px;
+}
+
+.out {
+    width: 100%;
+    text-align: end;
+}
+
+.msgBox {
+    padding: 10px;
+    /*border: 2px solid black;*/
+    height: 370px;
+}
+
+.dashboard {
+    margin: auto;
+}
+
+md-toolbar {
+    box-shadow: 0 2px 10px dimgray;
+}
+
+.chatBox {
+    padding: 0px;
+    height: 500px;
+}
+
+md-input-container {
+    font-size: small;
+    width: unset;
+}
+
+.msgInput {
+    position: absolute;
+    bottom: 0px;
+    box-shadow: 0 -2px 10px dimgray;
+}
+
+.avatar {
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+}
+.online{
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px gray;
+    background: greenyellow;
+}

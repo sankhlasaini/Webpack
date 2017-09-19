@@ -1,0 +1,57 @@
+<div fxLayoutAlign="center" class="text-center">
+  <div form [formGroup]="searchForm" class="searchInput {{searchInput}}">
+    <md-input-container floatPlaceholder="never" color="primary">
+      <input mdInput type="text" placeholder="Enter Pincode" formControlName="pincode" (keyup)="search()" (blur)="searchInput='searchInputBlur'"
+        (click)="searchInput='searchInputFocus'" class="text-center">
+      <md-hint align="end">
+        <div class="md-hint" *ngIf="searchForm.get('pincode').hasError('pattern') && searchForm.get('pincode')">
+          Numbers Only (6 Digits)
+        </div>
+      </md-hint>
+    </md-input-container>
+  </div>
+</div>
+<div class="text-center">
+  <md-icon class="md-36">local_hospital</md-icon>
+</div>
+<div [@animateTop] class="text-center md-24" *ngIf="pincodeRes">{{pincodeRes.count}} Results Found</div>
+
+<md-card [@animateTop] *ngIf="pincodeRes" class="resTable table-responsive">
+  <table class="table table-hover " [mfData]="pincodeRes.records" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
+    [(mfSortOrder)]="sortOrder">
+    <thead class="thead">
+      <tr>
+        <th>
+          <mfDefaultSorter by="Hospital_Name">Hospital Name</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter style="width: 20%" by="Location">Address</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter style="width: 20%" by="District">District</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter style="width: 20%" by="State">State</mfDefaultSorter>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-hover">
+      <tr *ngFor="let item of mf.data">
+        <td>{{item.Hospital_Name}}</td>
+        <td>{{item.Location}}</td>
+        <td>{{item.District}}</td>
+        <td>{{item.State | uppercase}}</td>
+        <!-- <td class="buttonCol">
+        <button md-icon-button color="primary" (click)="rowDel(item.email)"><md-icon class="tableBtn">close</md-icon></button>
+      </td> -->
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</md-card>

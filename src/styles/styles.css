@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+body {
+    /*background-color: #f7f7f7;*/
+    background: #e0e0e0;
+    padding: 0px;
+    margin: 0px;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.loadingHtml {
+    margin: auto;
+    font-size: 30px;
+    color: dimgray;
+    text-shadow: 2px 2px 10px dimgray;
+}
+
+.dimgray-text {
+    color: dimgray;
+}
+
+.loadingSpinnerBtn {
+    height: unset !important;
+    width: unset !important;
+    padding: 10px;
+}
+
+.md-12 {
+    font-size: 12px;
+}
+
+.md-14 {
+    font-size: 14px;
+}
+
+.md-18 {
+    font-size: 18px;
+}
+
+.md-24 {
+    font-size: 24px;
+}
+
+.md-36 {
+    font-size: 36px;
+}
+
+.md-48 {
+    font-size: 48px;
+}
+
+input[type=date], input[type=datetime-local], input[type=email], input[type=number], input[type=password], input[type=search-md], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], textarea.md-textarea {
+    background-color: unset !important;
+    border: unset !important;
+    border-bottom: unset !important;
+    border-radius: unset !important;
+    outline: unset !important;
+    height: unset !important;
+    /*width: unset !important;*/
+    font-size: unset !important;
+    box-shadow: unset !important;
+    box-sizing: unset !important;
+    transition: unset !important;
+}
+
+input[type=date]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=number]:focus, input[type=password]:focus, input[type=search-md]:focus, input[type=search]:focus, input[type=tel]:focus, input[type=text]:focus, input[type=time]:focus, input[type=url]:focus, textarea.md-textarea:focus {
+    border: 0px !important;
+    box-shadow: unset !important;
+}
+
+.mat-datepicker-toggle {
+    /*background: unset !important;*/
+}
+
+snack-bar-container {
+    /*background: #0167a3 !important;*/
+}
+
+.mat-dialog-container {
+    min-width: 100%;
+}
+
+.text-right {
+    text-align: end;
+}
+
+.text-center {
+    text-align: center;
+}
+.table a {
+    margin-left: 0px !important;
+}
+
+.pagination .active .page-link {
+    background: #536DFE !important;
+    border-radius: 100% !important;
+    padding: 7px 12px 7px 12px !important;
+}
+.pagination  .page-link {
+     background: transparent !important; 
+    border-radius: 100% !important;
+    padding: 7px 12px 7px 12px !important;
+}
